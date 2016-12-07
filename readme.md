@@ -13,6 +13,16 @@ Check out the [example app](https://github.com/lihaoyi/workbench-example-app) fo
 
 Installation
 ------------
+### If you want to install my version of the plugin:
+
+- Add to your `project/plugins.sbt`
+```
+resolvers += Resolver.sonatypeRepo("snapshots")
+addSbtPlugin("com.github.torstenrudolf" % "workbench" % "0.3.1-SNAPSHOT")
+```
+
+### In order to install the original:
+
 - Add to your `project/plugins.sbt`
 ```scala
 addSbtPlugin("com.lihaoyi" % "workbench" % "0.3.0")

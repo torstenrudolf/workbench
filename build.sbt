@@ -9,11 +9,13 @@ val defaultSettings = Seq(
 lazy val root = project.in(file(".")).settings(defaultSettings:_*).settings(
   name := "workbench",
   version := "0.3.1-SNAPSHOT",
-  organization := "com.lihaoyi",
+//  organization := "com.lihaoyi",
+  organization := "com.github.torstenrudolf",
   scalaVersion := "2.10.6",
   sbtPlugin := true,
   publishArtifact in Test := false,
-  publishTo := Some("releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2"),
+//  publishTo := Some("releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2"),
+  publishTo := Some("snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"),
   pomExtra := (
     <url>https://github.com/lihaoyi/workbench</url>
       <licenses>
