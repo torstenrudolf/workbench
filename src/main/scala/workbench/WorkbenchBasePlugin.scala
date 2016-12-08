@@ -22,6 +22,7 @@ object WorkbenchBasePlugin extends AutoPlugin {
     }
 
     val localUrl = settingKey[(String, Int)]("localUrl")
+    val workbenchDefaultRootObject = settingKey[Option[(String, String)]]("path to defaultRootObject served on `/` and rootDirectory")
     val workbenchStartMode = settingKey[StartMode](
       "should the web server start on sbt load, on compile, or only by manually running `startWorkbenchServer`")
     val startWorkbenchServer = taskKey[Unit]("start local web server manually")
@@ -36,6 +37,7 @@ object WorkbenchBasePlugin extends AutoPlugin {
 
   val workbenchSettings = Seq(
     localUrl := ("localhost", 12345),
+    workbenchDefaultRootObject := None,
     (extraLoggers in ThisBuild) := {
       val clientLogger = FullLogger{
         new Logger {
@@ -50,7 +52,7 @@ object WorkbenchBasePlugin extends AutoPlugin {
       (key: ScopedKey[_]) => clientLogger +: currentFunction(key)
     },
     server := {
-      val server = new Server(localUrl.value._1, localUrl.value._2)
+      val server = new Server(localUrl.value._1, localUrl.value._2, workbenchDefaultRootObject.value.map(_._1), workbenchDefaultRootObject.value.map(_._2))
       if (workbenchStartMode.value == OnSbtLoad) server.start()
       server
     },
