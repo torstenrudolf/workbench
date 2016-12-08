@@ -18,7 +18,7 @@ Installation
 - Add to your `project/plugins.sbt`
 ```
 resolvers += Resolver.sonatypeRepo("snapshots")
-addSbtPlugin("com.github.torstenrudolf" % "workbench" % "0.3.1-SNAPSHOT")
+addSbtPlugin("com.github.torstenrudolf" % "workbench" % "0.3.1b-SNAPSHOT")
 ```
 
 ### In order to install the original:
